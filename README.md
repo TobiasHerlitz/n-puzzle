@@ -47,10 +47,24 @@ The downside to this is that it obfuscates which parts of the JSX contains "actu
 ### Tests
 Tests are co-located with the files that are tested and have the suffix `.test.`
 
+### Requirements
+
+- 🚧 Sidan skall vara responsive och funka i mobil, surfplatta osv.
+- 🚧 Brickorna skall vara numrerade från 1 och uppåt
+- 🚧 Det skall vara exakt ett tomrum
+- 🚧 Brickor flyttas genom att klicka på en bricka i samma kolumn eller rad som den tomma rutan, då flyttas den brickan och alla brickor mellan den och tomrummet ett steg mot den tomma rutan. Så om användaren klickar på femman i exempelwireframen nedan så flyttas både femman och tian ett steg nedåt.
+- 🚧 All text skall vara i Google-fonten Open Sans
+- 🚧 Brickornas initiala ordning skall vara slumpad
+- 🚧 Det skall finnas en knapp för att slumpa om ordningen
+- 🚧 Om användaren löser pusslet skall det skrivas ut på skärmen på något lämpligt sätt.
+
+
 ### Before finishing
+
 - 🚧 Remove lodash if i havent used it
 - 🚧 Remove the react context boilerplate if it's not used
 - 🚧 Remove hooks that aren't used
 - 🚧 Add steps to run project if reviewer doesn't have bun installed
 - 🚧 Clean up scripts in package.json
 - 🚧 Overall look at readme. Fill or remove terminology if applicable. Review and manually test "Getting started"
+- 🚧 Write something about decisions with naming. Board vs. BoardEntity

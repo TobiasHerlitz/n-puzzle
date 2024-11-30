@@ -1,5 +1,9 @@
 :root {
-  --bg-color: #1B263B;
+  --misty-rose: #FAE3E3;
+  --desert-sand: #F7D4BC;
+  --pink-lavender: #CFA5B4;
+  --african-violet: #C98BB9;
+  --chinese-violet: #846B8A;
 
   --gap-0_5: calc(var(--gap) * 0.5);
   --gap: 8px;
@@ -14,7 +18,7 @@
 
   --border-radius: 12px;
 
-  font-family: "Montserrat", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
 html {
@@ -29,12 +33,5 @@ html {
 
 body {
   margin: 0;
-}
-
-button, select {
-  font-family: "Montserrat", sans-serif;
-}
-
-input, tbody {
-  font-family: "Inconsolata", sans-serif;
+  background-color: var(--misty-rose);
 }
