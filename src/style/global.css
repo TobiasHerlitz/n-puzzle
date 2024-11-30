@@ -1,0 +1,40 @@
+:root {
+  --bg-color: #1B263B;
+
+  --gap-0_5: calc(var(--gap) * 0.5);
+  --gap: 8px;
+  --gap-1_5: calc(var(--gap) * 1.5);
+  --gap-2: calc(var(--gap) * 2);
+  --gap-2_5: calc(var(--gap) * 2.5);
+  --gap-3: calc(var(--gap) * 3);
+  --gap-3_5: calc(var(--gap) * 3.5);
+  --gap-4: calc(var(--gap) * 4);
+  --gap-4_5: calc(var(--gap) * 4.5);
+  --gap-5: calc(var(--gap) * 5);
+
+  --border-radius: 12px;
+
+  font-family: "Montserrat", sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+button, select {
+  font-family: "Montserrat", sans-serif;
+}
+
+input, tbody {
+  font-family: "Inconsolata", sans-serif;
+}
