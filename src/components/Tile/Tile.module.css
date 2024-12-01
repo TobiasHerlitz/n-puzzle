@@ -12,9 +12,11 @@
   aspect-ratio: 1/1;
 }
 
-.clickable:hover {
-  cursor: pointer;
-  background-color: var(--african-violet);
+@media (hover:hover) {
+  .clickable:hover {
+    cursor: pointer;
+    background-color: var(--african-violet);
+  }
 }
 
 @media only screen and (max-width: 600px) {
