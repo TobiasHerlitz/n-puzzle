@@ -30,6 +30,7 @@
       "@utils": ["./src/utils"],
       "@consts": ["./src/consts"],
       "@gameObjects": ["./src/gameObjects"],
+      "@assets": ["./src/assets"],
       "@style": ["./src/style"]
     }
   },

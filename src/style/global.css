@@ -4,17 +4,10 @@
   --pink-lavender: #CFA5B4;
   --african-violet: #C98BB9;
   --chinese-violet: #846B8A;
+  --disabled-color: #838383;
 
-  --gap-0_5: calc(var(--gap) * 0.5);
   --gap: 8px;
-  --gap-1_5: calc(var(--gap) * 1.5);
-  --gap-2: calc(var(--gap) * 2);
-  --gap-2_5: calc(var(--gap) * 2.5);
-  --gap-3: calc(var(--gap) * 3);
-  --gap-3_5: calc(var(--gap) * 3.5);
-  --gap-4: calc(var(--gap) * 4);
-  --gap-4_5: calc(var(--gap) * 4.5);
-  --gap-5: calc(var(--gap) * 5);
+  --gap-0_5: calc(var(--gap) * 0.5);
 
   --border-radius: 12px;
 
@@ -34,4 +27,25 @@ html {
 body {
   margin: 0;
   background-color: var(--misty-rose);
+}
+
+button {
+  font-family: "Open Sans", sans-serif;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: var(--gap);
+  background: var(--chinese-violet);
+  color: var(--misty-rose);
+}
+
+button:hover {
+  background: var(--african-violet);
+}
+
+button:disabled {
+  background: var(--disabled-color);
+  cursor: auto;
 }
