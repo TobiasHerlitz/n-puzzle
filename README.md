@@ -1,11 +1,15 @@
 # packing
 
 ## Getting started
-I've developed with bun so:
+I've developed with bun:
 
 1. Install [bun](https://bun.sh/)
 2. `bun install` - Install deps
 3. `bun run dev` - Start dev server
+
+But npm seems to work as well:
+1. `npm install`
+2. `npm run dev`
 
 ## Structure
 - Routes are added in /src/routes. Naming should reflect their intended subdirectory in resulting URL
