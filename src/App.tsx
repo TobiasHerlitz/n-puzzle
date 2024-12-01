@@ -1,9 +1,7 @@
 import './style/global.css';
 
-import { RouterProvider } from 'react-router-dom';
-
-import { router } from './router';
+import { Landing } from '@routes';
 
 export const App = () => {
-  return <RouterProvider router={router} />;
+  return <Landing />;
 };
