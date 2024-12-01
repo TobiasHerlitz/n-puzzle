@@ -20,6 +20,11 @@ The alternative as I saw it was to use a bunch of utils-function that took `Boar
 - Board != BoardEntity - I decided to suffix the game object with "Entity" to distinguish from the React components with the same name.
 - I have used vanilla css and leveraging CSS modules and CSS variables. Modern css is really plenty, especially since nesting was introduced [caniuse](https://caniuse.com/?search=css-nesting). I feel that tools like styled components obfuscates which parts of the JSX contains "actual" components with logic as opposed to information about styling. Using css-classes separates styling from logic and in vy view reduces overhead.
 
+### Further development
+- It would be nice to animate the movements. It's probably difficult to do with the current grid layout. I'd wager that you
+would have to position the tiles absolutely and grab the x, y coordinates from each tile instance.
+- You could store a hash of the puzzle state in the url and update it after every move. That would enable the user share state with others.
+
 ### Terminology
 | Term      | Description                                                                                             |
 | --------- | --------------------------------------------------------------------------------------------------------|
@@ -55,6 +60,6 @@ Tests are co-located with the files that are tested and have the suffix `.test.`
 - ✅ Remove hooks that aren't used
 - ✅ Add steps to run project if reviewer doesn't have bun installed
 - ✅ Write something about decisions with naming. Board vs. BoardEntity
-- 🚧 Clean up scripts in package.json
+- ✅ Clean up scripts in package.json
+- ✅ Remove commented out vars in global.css
 - 🚧 Overall look at readme. Fill or remove terminology if applicable.
-- 🚧 Remove commented out vars in global.css
