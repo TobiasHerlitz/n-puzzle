@@ -19,6 +19,8 @@ I felt that modelling in games fit oop fairly well in the sense that entities ha
 The alternative as I saw it was to use a bunch of utils-function that took `Board`- and `Tile`-objects and that feels a bit too decoupled.
 - Board != BoardEntity - I decided to suffix the game object with "Entity" to distinguish from the React components with the same name.
 - I have used vanilla css and leveraging CSS modules and CSS variables. Modern css is really plenty, especially since nesting was introduced [caniuse](https://caniuse.com/?search=css-nesting). I feel that tools like styled components obfuscates which parts of the JSX contains "actual" components with logic as opposed to information about styling. Using css-classes separates styling from logic and in vy view reduces overhead.
+- I have added a "Fuska" button that sets the board so that its one step away from completion. It was useful when testing the
+CelebrationOverlay and `isSolved`-method. I kept it in because it might be nice when reviewing.
 
 ### Further development
 - It would be nice to animate the movements. It's probably difficult to do with the current grid layout. I'd wager that you
