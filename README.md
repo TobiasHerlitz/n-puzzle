@@ -11,20 +11,16 @@ But npm seems to work as well:
 1. `npm install`
 2. `npm run dev`
 
-## Structure
-- Routes are added in /src/routes. Naming should reflect their intended subdirectory in resulting URL
-- Components should have their own directory and be exported in an index file.
-- Avoid directories with "subcomponents" to prevent an overly nested structure
-- Prefer aliased imports. You alias in `tsconfig.json` and a plugin includes them automatically in `vite.config.ts`. The only exception is the css-file holding the global styles.
-
 ## The project
 
-### About
-- Runtime is [bun](https://bun.sh/)
-- Uses vite
-- Uses [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) for fast Refresh
+### Decisions
+- I normally try to stay away from classes in otherwise functional react projects but decided to use classes for game objects in this case.
+I felt that modelling in games fit oop fairly well in the sense that entities have state that you then want to affect in different ways.
+The alternative as I saw it was to use a bunch of utils-function that took `Board`- and `Tile`-objects and that feels a bit too decoupled.
+- Board != BoardEntity - I decided to suffix the game object with "Entity" to distinguish from the React components with the same name.
+- I have used vanilla css and leveraging CSS modules and CSS variables. Modern css is really plenty, especially since nesting was introduced [caniuse](https://caniuse.com/?search=css-nesting). I feel that tools like styled components obfuscates which parts of the JSX contains "actual" components with logic as opposed to information about styling. Using css-classes separates styling from logic and in vy view reduces overhead.
 
-## Terminology
+### Terminology
 | Term      | Description                                                                                             |
 | --------- | --------------------------------------------------------------------------------------------------------|
 | board     | The game board holding all tiles                                                                        |
@@ -32,22 +28,10 @@ But npm seems to work as well:
 | entity    | Suffix added to distinguish between the object holding game logic and rendering (Board vs. BoardEntity) |
 
 
-### Tech decisions
-
-## Styling
-
-### Vanilla CSS?
-I'm starting of with just using vanilla CSS, with CSS modules and CSS variables it looks like I won't need a preprocessor, but we'll see. For now let's cross the dependency bridge if and when we get there
-
-### Global styling
-Located in `src/style.global.css`. Might be useful to split its contents into different files in a real project.
-
-### Why no styled components?
-In essence, styled component makes components out of something that could simply be just an html-element with a class.
-The downside to this is that it obfuscates which parts of the JSX contains "actual" components with logic as opposed to information about styling. Actually using the wide variety of html-elements add context to both other developers and screen readers, it therefore makes sense to opt for using html-elements front and center.
-
-### Import order
-[eslint-plugin-import-order](https://github.com/import-js/eslint-plugin-import/issues/2948) seems to be in a bit of a state and doesn't support eslint v9 yet. Thats why I use [eslint-plugin-simple-sort](https://github.com/lydell/eslint-plugin-simple-import-sort)
+### About
+- Runtime is [bun](https://bun.sh/)
+- Uses vite
+- Uses [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) for fast Refresh
 
 
 ### Tests
@@ -69,8 +53,8 @@ Tests are co-located with the files that are tested and have the suffix `.test.`
 
 - ✅ Remove the react context boilerplate if it's not used
 - ✅ Remove hooks that aren't used
-- 🚧 Add steps to run project if reviewer doesn't have bun installed
+- ✅ Add steps to run project if reviewer doesn't have bun installed
+- ✅ Write something about decisions with naming. Board vs. BoardEntity
 - 🚧 Clean up scripts in package.json
-- 🚧 Overall look at readme. Fill or remove terminology if applicable. Review and manually test "Getting started"
-- 🚧 Write something about decisions with naming. Board vs. BoardEntity
+- 🚧 Overall look at readme. Fill or remove terminology if applicable.
 - 🚧 Remove commented out vars in global.css
