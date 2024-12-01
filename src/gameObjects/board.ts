@@ -25,6 +25,20 @@ export class Board {
     makeObservable(this, { slots: observable });
   }
 
+  isSolved() {
+    return this.slots.every((slot, index) => {
+      if (slot?.value === index + 1) {
+        return true;
+      }
+
+      if (index + 1 === this.slots.length && slot === null) {
+        return true;
+      }
+
+      return false;
+    });
+  }
+
   shiftTiles(tile: Tile) {
     const tileCoordinates = this.getCoordinate(tile);
     const gapCoordinates = this.getCoordinate(null);
@@ -72,6 +86,20 @@ export class Board {
 
   shuffle() {
     this.slots = shuffle(this.slots);
+  }
+
+  /**
+   * Sets the board up so that its only one move away from solving the puzzle.
+   * Might be useful during the review so I'll keep it.
+   */
+  cheat() {
+    const slots: (Tile | null)[] = Array.from(
+      { length: this.slots.length - 1 },
+      (_, i) => new Tile({ value: i + 1, board: this })
+    );
+    const lastTile = slots.pop();
+    slots.push(null, lastTile || null);
+    this.slots = slots;
   }
 
   getCoordinate(slot: Tile | null) {

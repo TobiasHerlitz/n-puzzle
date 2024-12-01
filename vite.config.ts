@@ -10,6 +10,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@globalStyle': resolve(__dirname, './src/style/global.css'),
+      '@assets': resolve(__dirname, './src/assets'),
     },
   },
   plugins: [react(), tsconfigPaths()],
