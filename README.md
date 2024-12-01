@@ -39,7 +39,7 @@ Tests are co-located with the files that are tested and have the suffix `.test.`
 
 ### Requirements
 
-- 🚧 Sidan skall vara responsive och funka i mobil, surfplatta osv.
+- ✅ Sidan skall vara responsive och funka i mobil, surfplatta osv.
 - ✅ Brickorna skall vara numrerade från 1 och uppåt
 - ✅ Det skall vara exakt ett tomrum
 - ✅ Brickor flyttas genom att klicka på en bricka i samma kolumn eller rad som den tomma rutan, då flyttas den brickan och alla brickor mellan den och tomrummet ett steg mot den tomma rutan. Så om användaren klickar på femman i exempelwireframen nedan så flyttas både femman och tian ett steg nedåt.
