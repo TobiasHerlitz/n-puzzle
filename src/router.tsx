@@ -11,6 +11,10 @@ export const router = createBrowserRouter([
         element: <Landing />,
       },
       {
+        path: 'n-puzzle',
+        element: <Landing />,
+      },
+      {
         path: '*',
         element: <NotFound />,
       },

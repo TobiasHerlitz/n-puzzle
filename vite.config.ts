@@ -14,6 +14,7 @@ export default defineConfig({
     },
   },
   plugins: [react(), tsconfigPaths()],
+  base: 'n-puzzle',
   server: {
     host: true, // Needed to run in docker
     port: 8000,
