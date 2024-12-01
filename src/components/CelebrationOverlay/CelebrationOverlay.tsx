@@ -1,8 +1,8 @@
+import amazingGIF from '@assets/amazing.gif';
 import { Board as BoardEntity } from '@gameObjects';
 import { observer } from 'mobx-react-lite';
 import ConfettiExplosion from 'react-confetti-explosion';
 
-import amazingGIF from '@assets/amazing.gif';
 import styles from './CelebrationOverlay.module.css';
 
 interface CelebrationOverlayProps {
