@@ -4,4 +4,13 @@
   display: grid;
   border-radius: var(--border-radius);
   border: 3px solid var(--chinese-violet);
+  min-width: 600px;
+}
+
+@media only screen and (max-width: 600px) {
+  .puzzleBoard {
+    width: 100%;
+    min-width: 400px;
+    border: none;
+  }
 }
