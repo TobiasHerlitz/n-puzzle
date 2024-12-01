@@ -1,8 +1,7 @@
 .puzzleBoard {
   padding: var(--gap-0_5);
-/*  background: var(--desert-sand);*/
   grid-gap: var(--gap-0_5);
   display: grid;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   border: 3px solid var(--chinese-violet);
 }

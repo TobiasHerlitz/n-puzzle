@@ -1,7 +1,7 @@
 :root {
   --misty-rose: #FAE3E3;
-  --desert-sand: #F7D4BC;
-  --pink-lavender: #CFA5B4;
+/*  --desert-sand: #F7D4BC;*/
+/*  --pink-lavender: #CFA5B4;*/
   --african-violet: #C98BB9;
   --chinese-violet: #846B8A;
   --disabled-color: #838383;
@@ -9,7 +9,7 @@
   --gap: 8px;
   --gap-0_5: calc(var(--gap) * 0.5);
 
-  --border-radius: 12px;
+  --border-radius: 8px;
 
   font-family: "Open Sans", sans-serif;
 }
@@ -32,7 +32,7 @@ body {
 button {
   font-family: "Open Sans", sans-serif;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
   cursor: pointer;
   font-weight: 600;
   font-size: 1.2rem;

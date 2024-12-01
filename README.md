@@ -65,3 +65,4 @@ Tests are co-located with the files that are tested and have the suffix `.test.`
 - 🚧 Clean up scripts in package.json
 - 🚧 Overall look at readme. Fill or remove terminology if applicable. Review and manually test "Getting started"
 - 🚧 Write something about decisions with naming. Board vs. BoardEntity
+- 🚧 Remove commented out vars in global.css
