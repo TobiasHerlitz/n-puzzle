@@ -28,6 +28,8 @@
       "@types": ["./src/types"],
       "@state": ["./src/state"],
       "@utils": ["./src/utils"],
+      "@consts": ["./src/consts"],
+      "@gameObjects": ["./src/gameObjects"],
       "@style": ["./src/style"]
     }
   },
