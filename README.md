@@ -1,6 +1,8 @@
 # packing
 
 ## Getting started
+I've developed with bun so:
+
 1. Install [bun](https://bun.sh/)
 2. `bun install` - Install deps
 3. `bun run dev` - Start dev server
@@ -19,9 +21,12 @@
 - Uses [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) for fast Refresh
 
 ## Terminology
-| Term     | Description                                                                     |
-| ---------| ------------------------------------------------------------------------------- |
-| term     | description                                                                     |
+| Term      | Description                                                                                             |
+| --------- | --------------------------------------------------------------------------------------------------------|
+| board     | The game board holding all tiles                                                                        |
+| tile      | Individual tiles in a game board                                                                        |
+| entity    | Suffix added to distinguish between the object holding game logic and rendering (Board vs. BoardEntity) |
+
 
 ### Tech decisions
 
@@ -58,9 +63,8 @@ Tests are co-located with the files that are tested and have the suffix `.test.`
 
 ### Before finishing
 
-- 🚧 Remove lodash if i havent used it
-- 🚧 Remove the react context boilerplate if it's not used
-- 🚧 Remove hooks that aren't used
+- ✅ Remove the react context boilerplate if it's not used
+- ✅ Remove hooks that aren't used
 - 🚧 Add steps to run project if reviewer doesn't have bun installed
 - 🚧 Clean up scripts in package.json
 - 🚧 Overall look at readme. Fill or remove terminology if applicable. Review and manually test "Getting started"
