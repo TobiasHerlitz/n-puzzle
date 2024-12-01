@@ -32,16 +32,16 @@ jobs:
       - run: bun install
       - run: bun tsc
 
-  # tests:
-  #   name: Vitest tests
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     # setup-node is needed to avoid type errors on new language features
-  #     - uses: actions/setup-node@v3
-  #       with:
-  #         node-version: '20'
-  #     - uses: oven-sh/setup-bun@v2
+  tests:
+    name: Vitest tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # setup-node is needed to avoid type errors on new language features
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+      - uses: oven-sh/setup-bun@v2
 
-  #     - run: bun install
-  #     - run: bun test:ci
+      - run: bun install
+      - run: bun test:ci

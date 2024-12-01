@@ -7,9 +7,10 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "check:eslint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "test:all": "vitest run",
-    "test:ci": "vitest --exclude **/*benchmark.test.ts --run"
+    "test:ci": "vitest --exclude **/*benchmark.test.ts --run",
+    "lint:check": "eslint",
+    "lint:fix" : "eslint --fix"
   },
   "dependencies": {
     "lodash-es": "^4.17.21",

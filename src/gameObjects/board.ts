@@ -65,22 +65,24 @@ export class Board {
     }
 
     // Shift vertically
-    // Shift up
-    if (tileCoordinates.y > gapCoordinates.y) {
-      const tileCount = tileCoordinates.y - gapCoordinates.y;
-      for (let rowOffset = 0; rowOffset < tileCount; rowOffset++) {
-        this.slots[gapIndex + rowOffset * this.width] =
-          this.slots[gapIndex + (rowOffset + 1) * this.width];
-        this.slots[gapIndex + (rowOffset + 1) * this.width] = null;
+    if (tileCoordinates.x === gapCoordinates.x) {
+      // Shift up
+      if (tileCoordinates.y > gapCoordinates.y) {
+        const tileCount = tileCoordinates.y - gapCoordinates.y;
+        for (let rowOffset = 0; rowOffset < tileCount; rowOffset++) {
+          this.slots[gapIndex + rowOffset * this.width] =
+            this.slots[gapIndex + (rowOffset + 1) * this.width];
+          this.slots[gapIndex + (rowOffset + 1) * this.width] = null;
+        }
       }
-    }
 
-    // Shift down
-    const tileCount = gapCoordinates.y - tileCoordinates.y;
-    for (let rowOffset = 0; rowOffset < tileCount; rowOffset++) {
-      this.slots[gapIndex - rowOffset * this.width] =
-        this.slots[gapIndex - (rowOffset + 1) * this.width];
-      this.slots[gapIndex - (rowOffset + 1) * this.width] = null;
+      // Shift down
+      const tileCount = gapCoordinates.y - tileCoordinates.y;
+      for (let rowOffset = 0; rowOffset < tileCount; rowOffset++) {
+        this.slots[gapIndex - rowOffset * this.width] =
+          this.slots[gapIndex - (rowOffset + 1) * this.width];
+        this.slots[gapIndex - (rowOffset + 1) * this.width] = null;
+      }
     }
   }
 
