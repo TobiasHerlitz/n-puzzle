@@ -9,9 +9,9 @@
   color: var(--desert-sand);
   border-radius: 8px;
   user-select: none;
-  cursor: pointer;
 }
 
-.tile:hover {
+.clickable:hover {
+  cursor: pointer;
   background-color: var(--african-violet);
 }

@@ -7,5 +7,19 @@ interface TileProps {
 }
 
 export const Tile = ({ tileEntity }: TileProps) => {
-  return <div className={styles.tile}>{tileEntity.value}</div>;
+  const isShiftable = tileEntity.isShiftable();
+
+  const tileClasses = [
+    styles.tile,
+    ...(isShiftable ? [styles.clickable] : []),
+  ].join(' ');
+
+  return (
+    <div
+      className={tileClasses}
+      onClick={isShiftable ? () => tileEntity.shift() : undefined}
+    >
+      {tileEntity.value}
+    </div>
+  );
 };

@@ -15,6 +15,20 @@ export class Tile {
   }
 
   shift() {
-    this.board.shiftTile(this);
+    if (!this.isShiftable()) {
+      return;
+    }
+
+    this.board.shiftTiles(this);
+  }
+
+  isShiftable() {
+    const tileCoordinates = this.board.getCoordinate(this);
+    const gapCoordinates = this.board.getCoordinate(null);
+
+    return (
+      tileCoordinates.x === gapCoordinates.x ||
+      tileCoordinates.y === gapCoordinates.y
+    );
   }
 }

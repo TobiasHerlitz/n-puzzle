@@ -25,46 +25,63 @@ export class Board {
     makeObservable(this, { slots: observable });
   }
 
-  shiftTile(tile: Tile) {
-    // TODO: Should be able to click rows and column and shift all
+  shiftTiles(tile: Tile) {
+    const tileCoordinates = this.getCoordinate(tile);
+    const gapCoordinates = this.getCoordinate(null);
     const tileIndex = this.slots.indexOf(tile);
+    const gapIndex = this.slots.indexOf(null);
 
-    const canRight =
-      tileIndex % this.width !== this.width - 1 &&
-      this.slots[tileIndex + 1] === null;
-    if (canRight) {
-      this.slots[tileIndex] = null;
-      this.slots[tileIndex + 1] = tile;
+    // Shift horizontally
+    if (tileCoordinates.y === gapCoordinates.y) {
+      // Shift right
+      if (tileCoordinates.x < gapCoordinates.x) {
+        const affectedSlots = this.slots.slice(tileIndex, gapIndex + 1);
+        affectedSlots.unshift(null);
+        affectedSlots.pop();
+        this.slots.splice(tileIndex, affectedSlots.length, ...affectedSlots);
+        return;
+      }
+
+      // Shift left
+      const affectedSlots = this.slots.slice(gapIndex, tileIndex + 1);
+      affectedSlots.push(null);
+      affectedSlots.shift();
+      this.slots.splice(gapIndex, affectedSlots.length, ...affectedSlots);
       return;
     }
 
-    const canLeft =
-      tileIndex % this.width !== this.width &&
-      this.slots[tileIndex - 1] === null;
-    if (canLeft) {
-      this.slots[tileIndex] = null;
-      this.slots[tileIndex - 1] = tile;
-      return;
+    // Shift vertically
+    // Shift up
+    if (tileCoordinates.y > gapCoordinates.y) {
+      const tileCount = tileCoordinates.y - gapCoordinates.y;
+      for (let rowOffset = 0; rowOffset < tileCount; rowOffset++) {
+        this.slots[gapIndex + rowOffset * this.width] =
+          this.slots[gapIndex + (rowOffset + 1) * this.width];
+        this.slots[gapIndex + (rowOffset + 1) * this.width] = null;
+      }
     }
 
-    const canUp =
-      tileIndex >= this.width && this.slots[tileIndex - this.width] === null;
-    if (canUp) {
-      this.slots[tileIndex] = null;
-      this.slots[tileIndex - this.width] = tile;
-      return;
-    }
-
-    const canDown =
-      tileIndex <= this.slots.length - this.width &&
-      this.slots[tileIndex + this.width] === null;
-    if (canDown) {
-      this.slots[tileIndex] = null;
-      this.slots[tileIndex + this.width] = tile;
+    // Shift down
+    const tileCount = gapCoordinates.y - tileCoordinates.y;
+    for (let rowOffset = 0; rowOffset < tileCount; rowOffset++) {
+      this.slots[gapIndex - rowOffset * this.width] =
+        this.slots[gapIndex - (rowOffset + 1) * this.width];
+      this.slots[gapIndex - (rowOffset + 1) * this.width] = null;
     }
   }
 
   shuffle() {
     this.slots = shuffle(this.slots);
+  }
+
+  getCoordinate(slot: Tile | null) {
+    const index = this.slots.indexOf(slot);
+    if (index === -1) {
+      throw new Error('Could not find index');
+    }
+
+    const x = (index % this.width) + 1;
+    const y = Math.floor(index / this.width) + 1;
+    return { x, y };
   }
 }

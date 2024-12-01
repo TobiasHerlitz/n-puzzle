@@ -16,14 +16,8 @@ export const Board = observer(({ boardEntity }: BoardProps) => {
       style={{ gridTemplateColumns: `repeat(${boardEntity.width}, 1fr)` }}
     >
       {boardEntity.slots.map((slot) => (
-        <Fragment key={slot?.value ?? 'empty'}>
-          {slot instanceof TileEntity ? (
-            <div onClick={() => boardEntity.shiftTile(slot)}>
-              <Tile tileEntity={slot} />
-            </div>
-          ) : (
-            <div />
-          )}
+        <Fragment key={slot?.value ?? 'gap'}>
+          {slot instanceof TileEntity ? <Tile tileEntity={slot} /> : <div />}
         </Fragment>
       ))}
     </div>
