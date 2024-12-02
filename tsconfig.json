@@ -24,7 +24,6 @@
     "paths": {
       "@components": ["./src/components"],
       "@routes": ["./src/routes"],
-      "@types": ["./src/types"],
       "@consts": ["./src/consts"],
       "@gameObjects": ["./src/gameObjects"],
       "@assets": ["./src/assets"],

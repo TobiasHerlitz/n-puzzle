@@ -8,8 +8,10 @@ interface BoardArgs {
   height: number;
 }
 
+type Slot = Tile | null;
+
 export class Board {
-  slots: (Tile | null)[];
+  slots: Slot[];
   width: number;
 
   constructor({ width, height }: BoardArgs) {
@@ -95,16 +97,18 @@ export class Board {
    * Might be useful during the review so I'll keep it.
    */
   cheat() {
-    const slots: (Tile | null)[] = Array.from(
+    const slots: Slot[] = Array.from(
       { length: this.slots.length - 1 },
       (_, i) => new Tile({ value: i + 1, board: this })
     );
+
     const lastTile = slots.pop();
     slots.push(null, lastTile || null);
+
     this.slots = slots;
   }
 
-  getCoordinate(slot: Tile | null) {
+  getCoordinate(slot: Slot) {
     const index = this.slots.indexOf(slot);
     if (index === -1) {
       throw new Error('Could not find index');
@@ -112,6 +116,7 @@ export class Board {
 
     const x = (index % this.width) + 1;
     const y = Math.floor(index / this.width) + 1;
+
     return { x, y };
   }
 }

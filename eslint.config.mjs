@@ -16,7 +16,7 @@ export default tseslint.config(
       js.configs.recommended,
       ...tseslint.configs.strict,
       ...tseslint.configs.stylistic,
-      eslintConfigPrettier, // Might not be needed, check
+      eslintConfigPrettier,
       eslintPluginPrettierRecommended
     ],
     files: ['**/*.{ts,tsx}'],
@@ -44,7 +44,7 @@ export default tseslint.config(
       'simple-import-sort/exports': 'error',
       'react/react-in-jsx-scope': 0,
       '@typescript-eslint/no-non-null-assertion': 0,
-      'react/no-unknown-property': 0 // React three fiber elements not supported
+      'react/no-unknown-property': 0
     },
   }
 )

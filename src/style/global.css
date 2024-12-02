@@ -27,6 +27,10 @@ body {
   background-color: var(--misty-rose);
 }
 
+h1 {
+  margin: 0;
+}
+
 button {
   font-family: "Open Sans", sans-serif;
   border: none;
