@@ -37,7 +37,7 @@ describe('Board', () => {
 
   describe('isSolved', () => {
     it('should return true for a solved board', () => {
-      board.slots = [
+      board.setSlots([
         new Tile({ value: 1, board }),
         new Tile({ value: 2, board }),
         new Tile({ value: 3, board }),
@@ -47,13 +47,13 @@ describe('Board', () => {
         new Tile({ value: 7, board }),
         new Tile({ value: 8, board }),
         null,
-      ];
+      ]);
 
       expect(board.isSolved()).toBe(true);
     });
 
     it('should return false non-solved board', () => {
-      board.slots = [
+      board.setSlots([
         new Tile({ value: 6, board }),
         new Tile({ value: 1, board }),
         new Tile({ value: 5, board }),
@@ -63,7 +63,7 @@ describe('Board', () => {
         new Tile({ value: 3, board }),
         new Tile({ value: 4, board }),
         new Tile({ value: 7, board }),
-      ];
+      ]);
       expect(board.isSolved()).toBe(false);
     });
   });
@@ -78,7 +78,7 @@ describe('Board', () => {
 
   describe('shiftTiles', () => {
     it('should shift one tile left', () => {
-      board.slots = [
+      board.setSlots([
         new Tile({ value: 6, board }),
         null,
         new Tile({ value: 1, board }),
@@ -88,7 +88,7 @@ describe('Board', () => {
         new Tile({ value: 3, board }),
         new Tile({ value: 4, board }),
         new Tile({ value: 7, board }),
-      ];
+      ]);
 
       const expectedSlots = [
         new Tile({ value: 6, board }),
@@ -107,7 +107,7 @@ describe('Board', () => {
     });
 
     it('should shift one tile right', () => {
-      board.slots = [
+      board.setSlots([
         new Tile({ value: 6, board }),
         new Tile({ value: 1, board }),
         new Tile({ value: 5, board }),
@@ -117,7 +117,7 @@ describe('Board', () => {
         new Tile({ value: 3, board }),
         new Tile({ value: 4, board }),
         new Tile({ value: 7, board }),
-      ];
+      ]);
 
       const expectedSlots = [
         new Tile({ value: 6, board }),
@@ -136,7 +136,7 @@ describe('Board', () => {
     });
 
     it('should shift one tile up', () => {
-      board.slots = [
+      board.setSlots([
         new Tile({ value: 6, board }),
         new Tile({ value: 1, board }),
         new Tile({ value: 5, board }),
@@ -146,7 +146,7 @@ describe('Board', () => {
         new Tile({ value: 3, board }),
         new Tile({ value: 4, board }),
         new Tile({ value: 7, board }),
-      ];
+      ]);
 
       const expectedSlots = [
         new Tile({ value: 6, board }),
@@ -165,7 +165,7 @@ describe('Board', () => {
     });
 
     it('should shift one tile down', () => {
-      board.slots = [
+      board.setSlots([
         new Tile({ value: 6, board }),
         new Tile({ value: 1, board }),
         new Tile({ value: 5, board }),
@@ -175,7 +175,7 @@ describe('Board', () => {
         new Tile({ value: 3, board }),
         new Tile({ value: 4, board }),
         new Tile({ value: 7, board }),
-      ];
+      ]);
 
       const expectedSlots = [
         new Tile({ value: 6, board }),
@@ -194,7 +194,7 @@ describe('Board', () => {
     });
 
     it('should shift two tiles left', () => {
-      board.slots = [
+      board.setSlots([
         null,
         new Tile({ value: 6, board }),
         new Tile({ value: 1, board }),
@@ -204,7 +204,7 @@ describe('Board', () => {
         new Tile({ value: 3, board }),
         new Tile({ value: 4, board }),
         new Tile({ value: 7, board }),
-      ];
+      ]);
 
       const expectedSlots = [
         new Tile({ value: 6, board }),
@@ -223,7 +223,7 @@ describe('Board', () => {
     });
 
     it('should shift two tiles up', () => {
-      board.slots = [
+      board.setSlots([
         null,
         new Tile({ value: 6, board }),
         new Tile({ value: 1, board }),
@@ -233,7 +233,7 @@ describe('Board', () => {
         new Tile({ value: 3, board }),
         new Tile({ value: 4, board }),
         new Tile({ value: 7, board }),
-      ];
+      ]);
 
       const expectedSlots = [
         new Tile({ value: 5, board }),
@@ -264,7 +264,7 @@ describe('Board', () => {
         new Tile({ value: 7, board }),
       ];
 
-      board.slots = [...initialSlots];
+      board.setSlots([...initialSlots]);
       board.shiftTiles(board.slots[4] as Tile);
       expect(board.slots).toEqual(initialSlots);
     });

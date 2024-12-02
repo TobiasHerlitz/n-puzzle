@@ -39,7 +39,8 @@ CelebrationOverlay and `isSolved`-method. I kept it in because it might be nice 
 - It would be nice to highlight all tiles set to be moved when hovering over one, this would require quite a bit more logic and
 a departure from the simple ":hover" though
 - I had some issues with triggering rerenders on changes in the game objects. To avoid explicit calls to rerender or duplicating state I decided to
-try [mobx](https://mobx.js.org/README.html). That is why some components are wrapped in the `observer`-function.
+try [mobx](https://mobx.js.org/README.html). That is why some components are wrapped in the `observer`-function. This also led to a (scary) late rewrite
+of the Board game object to fix a console warning and not being able to use private fields like (`#slots`). [mobx - limitations](https://mobx.js.org/observable-state.html#limitations)
 - I added the Board and Tile classes when I first started. In the end, I realized I might not need a class for Tiles with the current functionality
 since they just hold a single value and a pair of methods. The methods could exist on the Board-class instead.
 It is nice to be able to just call shift on each Tile though and it's a good base to extend from, like adding a getCoordinates() method if needed.

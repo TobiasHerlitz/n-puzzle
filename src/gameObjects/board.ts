@@ -1,5 +1,5 @@
 import { shuffle } from 'lodash-es';
-import { makeObservable, observable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 
 import { Tile } from './tile';
 
@@ -11,7 +11,7 @@ interface BoardArgs {
 type Slot = Tile | null;
 
 export class Board {
-  slots: Slot[];
+  _slots: Slot[];
   width: number;
 
   constructor({ width, height }: BoardArgs) {
@@ -22,9 +22,17 @@ export class Board {
       (_, i) => new Tile({ value: i + 1, board: this })
     );
 
-    this.slots = [...tiles, null];
+    this._slots = [...tiles, null];
     this.shuffle();
-    makeObservable(this, { slots: observable });
+    makeAutoObservable(this);
+  }
+
+  get slots() {
+    return this._slots;
+  }
+
+  setSlots(slots: Slot[]) {
+    this._slots = slots;
   }
 
   isSolved() {
@@ -42,27 +50,30 @@ export class Board {
   }
 
   shiftTiles(tile: Tile) {
+    const slots = [...this.slots];
     const tileCoordinates = this.getCoordinate(tile);
     const gapCoordinates = this.getCoordinate(null);
-    const tileIndex = this.slots.indexOf(tile);
-    const gapIndex = this.slots.indexOf(null);
+    const tileIndex = slots.indexOf(tile);
+    const gapIndex = slots.indexOf(null);
 
     // Shift horizontally
     if (tileCoordinates.y === gapCoordinates.y) {
       // Shift right
       if (tileCoordinates.x < gapCoordinates.x) {
-        const affectedSlots = this.slots.slice(tileIndex, gapIndex + 1);
+        const affectedSlots = slots.slice(tileIndex, gapIndex + 1);
         affectedSlots.unshift(null);
         affectedSlots.pop();
-        this.slots.splice(tileIndex, affectedSlots.length, ...affectedSlots);
+        slots.splice(tileIndex, affectedSlots.length, ...affectedSlots);
+        this.setSlots(slots);
         return;
       }
 
       // Shift left
-      const affectedSlots = this.slots.slice(gapIndex, tileIndex + 1);
+      const affectedSlots = slots.slice(gapIndex, tileIndex + 1);
       affectedSlots.push(null);
       affectedSlots.shift();
-      this.slots.splice(gapIndex, affectedSlots.length, ...affectedSlots);
+      slots.splice(gapIndex, affectedSlots.length, ...affectedSlots);
+      this.setSlots(slots);
       return;
     }
 
@@ -72,24 +83,28 @@ export class Board {
       if (tileCoordinates.y > gapCoordinates.y) {
         const tileCount = tileCoordinates.y - gapCoordinates.y;
         for (let rowOffset = 0; rowOffset < tileCount; rowOffset++) {
-          this.slots[gapIndex + rowOffset * this.width] =
-            this.slots[gapIndex + (rowOffset + 1) * this.width];
-          this.slots[gapIndex + (rowOffset + 1) * this.width] = null;
+          slots[gapIndex + rowOffset * this.width] =
+            slots[gapIndex + (rowOffset + 1) * this.width];
+          slots[gapIndex + (rowOffset + 1) * this.width] = null;
         }
+        this.setSlots(slots);
+        return;
       }
 
       // Shift down
       const tileCount = gapCoordinates.y - tileCoordinates.y;
       for (let rowOffset = 0; rowOffset < tileCount; rowOffset++) {
-        this.slots[gapIndex - rowOffset * this.width] =
-          this.slots[gapIndex - (rowOffset + 1) * this.width];
-        this.slots[gapIndex - (rowOffset + 1) * this.width] = null;
+        slots[gapIndex - rowOffset * this.width] =
+          slots[gapIndex - (rowOffset + 1) * this.width];
+        slots[gapIndex - (rowOffset + 1) * this.width] = null;
       }
+      this.setSlots(slots);
+      return;
     }
   }
 
   shuffle() {
-    this.slots = shuffle(this.slots);
+    this.setSlots(shuffle(this.slots));
   }
 
   /**
@@ -105,7 +120,7 @@ export class Board {
     const lastTile = slots.pop();
     slots.push(null, lastTile || null);
 
-    this.slots = slots;
+    this.setSlots(slots);
   }
 
   getCoordinate(slot: Slot) {
